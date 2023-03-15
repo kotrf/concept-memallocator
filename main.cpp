@@ -1,3 +1,5 @@
+/* MemAllocator class usage example */
+
 #include <iostream>
 #include "memallocator.h"
 
@@ -9,10 +11,13 @@ int main()
 {
     std::cout << "heapRgn0: " << reinterpret_cast<void *>(heapRgn0) << std::endl;
 
+    // Allocate 4 blocks
     void *p0 = memory.malloc();
     void *p1 = memory.malloc();
     void *p2 = memory.malloc();
     void *p3 = memory.malloc();
+
+    // Allocate one more block (must fail if MEM_ALLOCATOR_BLOCKS_TOTAL == 4)
     void *p4 = memory.malloc();
 
     std::cout << "p0: " <<  (void *)p0 << std::endl;
@@ -21,7 +26,7 @@ int main()
     std::cout << "p3: " <<  (void *)p3 << std::endl;
 
     if ( p4 )
-        std::cout << "p4: " <<  (void *)p3 << std::endl;
+        std::cout << "p4: " <<  (void *)p4 << std::endl;
     else
         std::cout << "p4: unable allocate memory block\n";
 
