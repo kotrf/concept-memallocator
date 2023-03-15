@@ -30,10 +30,13 @@ int main()
     else
         std::cout << "p4: unable allocate memory block\n";
 
+    // Free 4 blocks
     std::cout << "free(p0): " << (memory.mfree(p0) ? "done" : "fail") << std::endl;
     std::cout << "free(p1): " << (memory.mfree(p1) ? "done" : "fail") << std::endl;
     std::cout << "free(p2): " << (memory.mfree(p2) ? "done" : "fail") << std::endl;
     std::cout << "free(p3): " << (memory.mfree(p3) ? "done" : "fail") << std::endl;
+
+    // Free block with invalid ptr. Must fail
     std::cout << "free(p4): " << (memory.mfree(p4) ? "done" : "fail") << std::endl;
 
     return 0;
